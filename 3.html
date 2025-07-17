@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 Activity Details | St. John Youth Camp</title>
+    <link rel="icon" href="mon.jpg" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Include all your CSS variables and base styles from day1.html */
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-gold: #f59e0b;
+            --secondary-green: #059669;
+            --accent-coral: #fb7185;
+            --accent-sky: #0ea5e9;
+            --neutral-gray: #6b7280;
+            --neutral-light: #f9fafb;
+            --neutral-dark: #374151;
+            --white: #ffffff;
+            
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Crimson Text', serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 20px 25px -5px / 0.1); 
+            
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            background: var(--neutral-light);
+            overflow-x: hidden;
+            padding-bottom: 4rem; /* Add some padding for better spacing */
+        }
+
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+
+        .logo-header img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .detail-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem; /* Add margin between sections */
+        }
+
+        .detail-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .detail-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-time {
+            font-size: 1.1rem;
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        .detail-content {
+            color: var(--neutral-dark);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .detail-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-gray);
+        }
+
+        .detail-content ul li::before {
+            content: '•';
+            color: var(--primary-gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-button:hover {
+            background: #152b6b; /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Photo Gallery Styles for Detail Page */
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .detail-gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Responsive for detail page */
+        @media (max-width: 768px) {
+            .detail-container {
+                margin: 1.5rem auto;
+                padding: 1.5rem;
+            }
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+            .detail-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            }
+            .detail-gallery img {
+                height: 140px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up {
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(30px); /* Start position for animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Apply transition */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo-header">
+                <img src="photos/mon.jpg" alt="Monologue Logo">
+                <span class="logo-text">monologue</span>
+            </a>
+            
+            <nav class="breadcrumb">
+                <a href="main.html">Home</a>
+                <span>→</span>
+                <a href="day3.html">Day 3</a>
+                <span>→</span>
+                <span>Activity Details</span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="morning-prayer" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Morning Prayer & Devotion</h1>
+                <p class="detail-time">8:30 AM - 10:00 AM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/morning_prayer_1.jpg" alt="Campers praying in chapel">
+                <img src="photos/morning_prayer_2.jpg" alt="Sunrise over camp grounds">
+                <img src="photos/morning_prayer_3.jpg" alt="Open Bible with light">
+            </div>
+            
+            <div class="detail-content">
+                <p>This sacred hour is dedicated to beginning our day grounded in faith and peace. Join us in the tranquility of the chapel for a guided session of prayer and scripture reading, designed to center your spirit and prepare your heart for the day's adventures.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Guided Prayer**: Led by our spiritual director, guiding you through moments of reflection and supplication.</li>
+                    <li>**Scripture Reading**: A selected passage from the Bible, offering daily inspiration and guidance.</li>
+                    <li>**Quiet Reflection**: Personal time for meditation and contemplation, allowing you to connect deeply with your faith.</li>
+                    <li>**Community Gathering**: A peaceful start to the day, sharing a collective moment of spiritual preparation with your fellow campers.</li>
+                </ul>
+                
+                <p>This session is a cornerstone of our camp experience, providing a foundation of spiritual nourishment that will empower you throughout your journey. Come as you are, and let us together seek guidance and grace for the day ahead.</p>
+            </div>
+        </div>
+
+        <div id="breakfast-fellowship" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Breakfast Fellowship</h1>
+                <p class="detail-time">10:45 AM - 11:15 AM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/f1.jpg" alt="Group enjoying breakfast">
+                <img src="photos/breakfast_2.jpg" alt="Table with breakfast food">
+                <img src="photos/breakfast_3.jpg" alt="Campers chatting at breakfast">
+            </div>
+            
+            <div class="detail-content">
+                <p>Start your day with a hearty breakfast and even heartier conversations! Breakfast Fellowship is a time for campers to connect over a delicious meal, engage in lively discussions, and strengthen the bonds of community.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Nutritious Meal**: Enjoy a balanced breakfast prepared by our camp kitchen.</li>
+                    <li>**Table Discussions**: Guided questions to spark conversation and help you get to know your peers better.</li>
+                    <li>**Morning Energy**: A great way to fuel up and get energized for the day's activities.</li>
+                    <li>**New Friendships**: Opportunities to interact with different campers and staff members.</li>
+                </ul>
+                
+                <p>This is more than just a meal; it's an essential part of building fellowship and preparing spiritually and socially for the enriching experiences awaiting you.</p>
+            </div>
+        </div>
+
+        <div id="welcome-orientation" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Welcome & Orientation</h1>
+                <p class="detail-time">1:00 PM - 2:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/camp_activities.jpg" alt="Large group gathering">
+                <img src="photos/orientation_2.jpg" alt="Camp director speaking">
+                <img src="photos/orientation_3.jpg" alt="Icebreaker game">
+            </div>
+            
+            <div class="detail-content">
+                <p>Welcome to St. John Youth Camp! This session officially kicks off our incredible journey together. We'll start with fun icebreaker activities to get everyone comfortable and then dive into important information about camp expectations, safety guidelines, and the exciting daily routines.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Energetic Icebreakers**: Fun and interactive games to help you meet fellow campers and break the ice.</li>
+                    <li>**Camp Overview**: A comprehensive introduction to the camp's mission, values, and what to expect during your stay.</li>
+                    <li>**Meet the Staff**: Get acquainted with our dedicated camp counselors and leaders.</li>
+                    <li>**Q&A Session**: An opportunity to ask any questions you have about the camp.</li>
+                </ul>
+                
+                <p>This session is crucial for a smooth and enjoyable camp experience, setting the stage for a week of growth, learning, and unforgettable memories.</p>
+            </div>
+        </div>
+
+        <div id="team-formation" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Team Formation Activities</h1>
+                <p class="detail-time">2:15 PM - 3:30 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/team_building.jpg" alt="Team collaborating">
+                <img src="photos/team_formation_2.jpg" alt="Group solving a puzzle">
+                <img src="photos/team_formation_3.jpg" alt="Campers interacting outdoors">
+            </div>
+            
+            <div class="detail-content">
+                <p>Dive into dynamic team-building exercises designed to foster collaboration and communication. You'll be assigned to small groups, where you'll work together on engaging challenges and establish group covenants to guide your interactions throughout the camp.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Group Assignments**: Get to know your small group members, who will be your close companions for many activities.</li>
+                    <li>**Collaborative Challenges**: Engage in fun problem-solving activities that require teamwork and creative thinking.</li>
+                    <li>**Covenant Building**: Work with your team to establish shared values and expectations for working together harmoniously.</li>
+                    <li>**Leadership Opportunities**: Discover and utilize your strengths within a team setting.</li>
+                </ul>
+                
+                <p>These activities are fundamental to building the strong, supportive community that defines the St. John Youth Camp experience.</p>
+            </div>
+        </div>
+
+        <div id="lunch-small-group" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Lunch & Small Group Time</h1>
+                <p class="detail-time">5:00 PM - 7:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/lunch.jpg" alt="Lunch spread">
+                <img src="photos/small_group_1.jpg" alt="Small group discussion">
+                <img src="photos/small_group_2.jpg" alt="Campers eating together">
+            </div>
+            
+            <div class="detail-content">
+                <p>Recharge with a delicious lunch shared with your newly formed teams. This extended time allows for deeper discussions within your small groups, reflecting on the morning's activities and setting intentions for the afternoon.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Shared Meal**: Enjoy a relaxing and nourishing lunch with your group.</li>
+                    <li>**Guided Discussions**: Facilitated conversations around the morning's experiences and upcoming challenges.</li>
+                    <li>**Team Bonding**: Strengthen the bonds formed during team formation activities.</li>
+                    <li>**Personal Reflection**: An opportunity to share insights and perspectives in a supportive environment.</li>
+                </ul>
+                
+                <p>This time is crucial for processing the day's learnings and building closer relationships within your camp family.</p>
+            </div>
+        </div>
+
+        <div id="leadership-workshop" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Leadership Workshop</h1>
+                <p class="detail-time">7:10 PM - 10:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/workshop.jpg" alt="Workshop in progress">
+                <img src="photos/leadership_1.jpg" alt="Youth leader speaking">
+                <img src="photos/leadership_2.jpg" alt="Group brainstorming">
+            </div>
+            
+            <div class="detail-content">
+                <p>This interactive workshop focuses on developing Christian leadership principles. Through engaging activities and discussions, you'll explore what it means to lead with faith, discover your unique spiritual gifts, and learn how to apply them in service to your community and beyond.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Interactive Sessions**: Participate in engaging exercises that illuminate leadership concepts.</li>
+                    <li>**Spiritual Gift Discovery**: Guided self-assessment and discussions to help identify your unique spiritual talents.</li>
+                    <li>**Practical Application**: Learn how to use your gifts to serve others effectively.</li>
+                    <li>**Inspirational Speakers**: Hear from experienced leaders who will share their insights and journeys.</li>
+                </ul>
+                
+                <p>Empower yourself with the tools and inspiration to become a compassionate and effective leader, guided by your faith.</p>
+            </div>
+        </div>
+
+        <div id="outdoor-challenge" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Outdoor Challenge</h1>
+                <p class="detail-time">11:15 PM - 11:30 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/outdoor_activities.jpg" alt="Outdoor ropes course">
+                <img src="photos/outdoor_challenge_1.jpg" alt="Team navigating obstacle">
+                <img src="photos/outdoor_challenge_2.jpg" alt="Group huddle for strategy">
+            </div>
+            
+            <div class="detail-content">
+                <p>Test your teamwork and problem-solving skills in our thrilling Outdoor Challenge! This activity features team-based physical challenges, including a low ropes course and other problem-solving tasks, all designed to build trust and enhance communication within your group.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Low Ropes Course**: Navigate a series of elements that require cooperation and support.</li>
+                    <li>**Problem-Solving Tasks**: Engage in creative challenges that test your group's collective intelligence.</li>
+                    <li>**Trust Building**: Activities designed to strengthen reliance and confidence in your teammates.</li>
+                    <li>**Physical Activity**: A fun way to get active and enjoy the natural surroundings of the camp.</li>
+                </ul>
+                
+                <p>Embrace the challenge, support your team, and discover new strengths as you overcome obstacles together!</p>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="day3.html" class="back-button">← Back to Day 3 Schedule</a>
+        </div>
+    </main>
+
+    <script>
+        // Intersection Observer for animations (apply to all .detail-container elements)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.detail-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Smooth scroll to the target section if an anchor is in the URL
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main | St. John Youth Camp</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="photos/mon.jpg" type="image/png">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="description" content="Discover the transformative experience of St. John Youth Camp - spiritual growth, adventure, and community.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-gold: #f59e0b;
+            --secondary-green: #059669;
+            --accent-coral: #fb7185;
+            --accent-sky: #0ea5e9;
+            --neutral-gray: #6b7280;
+            --neutral-light: #f9fafb;
+            --neutral-dark: #374151;
+            --white: #ffffff;
+
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Crimson Text', serif;
+
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            background: var(--neutral-light);
+            overflow-x: hidden;
+            display: flex; /* Make body a flex container */
+            flex-direction: column; /* Stack children vertically */
+            min-height: 100vh; /* Ensure body takes full viewport height */
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+
+        .logo-header img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+      /* Hero Section */
+.hero-section {
+    background: url('photos/camp_activities.jpg') center center / cover no-repeat;
+    /* Removed border-radius as it's typically not used on a full-width hero or adjusted for desired effect */
+    /* If you want rounded corners, apply a small value like 8px or 16px, not 100px */
+    
+    padding: 1rem 10rem; /* Use rem units for better responsiveness, add horizontal padding */
+    text-align: center;
+    color: var(--white); /* Assuming --white is defined elsewhere */
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: scroll; /* Good for containing image within rounded corners if applied */
+
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* These properties ensure it spans the full viewport width */
+    width: 100vw; /* Use 100vw for full viewport width */
+    margin-left: calc(50% - 50vw); /* Centers it and makes it span full width */
+
+    /* Optional: Add a subtle overlay for better text readability on varying images */
+    /* You can adjust the rgba values and opacity as needed */
+    /* To remove, simply delete this entire ::before block */
+}
+
+.hero-section::before {
+    content: ''; /* Essential for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Dark overlay, adjust opacity (0.4) as needed */
+    z-index: 1; /* Place overlay above background image but below text */
+}
+
+.hero-section > * {
+    z-index: 2; /* Ensure content inside hero-section is above the overlay */
+    position: relative; /* Essential for z-index to take effect */
+}
+        /* Prayer Section */
+        .prayer-section {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .prayer-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-family: var(--font-secondary);
+        }
+
+        .prayer-text {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--neutral-dark);
+            max-width: 800px;
+            margin: 0 auto;
+            direction: rtl; /* For Arabic text */
+            text-align: center;
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 2rem;
+            background: var(--neutral-light);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+        }
+
+        .prayer-attribution {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--neutral-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Navigation Cards */
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .nav-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--accent-coral));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-sky));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-coral));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-description {
+            color: var(--neutral-gray);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-green), var(--accent-sky));
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Footer Styles */
+        .main-footer {
+            background-color: var(--primary-blue); /* Consistent with your primary blue */
+            color: var(--white);
+            padding: 2.5rem 1rem; /* Slightly more padding */
+            margin-top: 5rem; /* Add more space from content above */
+            box-shadow: inset 0 8px 10px -5px rgba(0,0,0,0.1); /* Subtle inner shadow */
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column; /* Stack items vertically by default */
+            align-items: center; /* Center items horizontally */
+            gap: 1.5rem; /* Space between sections */
+        }
+
+        /* Added for desktop footer layout */
+        @media (min-width: 769px) { /* Apply these styles for screens wider than 768px */
+            .footer-content {
+                flex-direction: row; /* Arrange horizontally */
+                justify-content: space-between; /* Space out items */
+                align-items: center; /* Align items vertically in the center */
+            }
+        }
+
+        .footer-content p {
+            font-size: 0.95rem; /* Slightly smaller copyright text */
+            margin: 0;
+            opacity: 0.8; /* Subtle transparency for copyright */
+        }
+
+        .social-follow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem; /* Space between "Follow us" and icons */
+        }
+
+        .social-follow p {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+            opacity: 1; /* Ensure "Follow us" text is fully visible */
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem; /* Adjusted icon size for footer */
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8; /* Slight transparency for icons */
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px) scale(1.1); /* Lift and slightly enlarge on hover */
+            color: var(--primary-gold); /* Gold highlight on hover */
+            opacity: 1;
+        }
+
+        /* Specific hover colors for brand recognition (optional, but good) */
+        .social-icons a .fa-instagram:hover {
+            color: #E1306C; /* Instagram brand color */
+        }
+        .social-icons a .fa-facebook-f:hover {
+            color: #3b5998; /* Facebook brand color */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                display: none; /* Hide desktop nav on small screens */
+            }
+
+            .mobile-menu-toggle {
+                display: block; /* Show mobile toggle on small screens */
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                padding: 0; /* No padding on mobile */
+                height: 50vh; /* Adjust hero height for mobile if needed */
+            }
+
+            .prayer-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .prayer-text {
+                padding: 1.5rem;
+                padding-left: 1.5rem;
+            }
+
+            .nav-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column; /* Stack on small screens */
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus States */
+        .nav-card:focus,
+        .cta-button:focus,
+        .social-icons a:focus {
+            outline: 2px solid var(--primary-gold);
+            outline-offset: 3px;
+        }
+
+        /* Ripple Effect Keyframes */
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo-header">
+                <img src="photos/mon.jpg" alt="Monologue Logo">
+                <span class="logo-text">Monologue</span>
+            </a>
+            <nav class="nav-menu">
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                &#9776;
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section fade-in-up">
+            </section>
+
+        <section class="prayer-section fade-in-up">
+            <h2 class="prayer-title">صلاة الشبيبة</h2>
+            <div class="prayer-text">
+                أَبَانَا الَّذِي فِي السَّمَاوَاتِ<br>
+                ،إِنَّنَا نُكَرِّسُ لَكَ شَبَابَنَا وَنَقِفُ عَلَى خِدْمَتِكَ نُفُوسَنَا<br>
+                فَامْنَحْنَا إِيمَانًا نَتَغَلَّبُ بِهِ عَلَى الْفَسَادِ<br>
+                لِنَصُونَ عَلَى الطَّهَارَةِ قُلُوبَنَا، وَنُتِمَّ عَلَى الدَّوَامِ مَشِيئَتَكَ.<br><br>
+                أَعْطِنَا أَنْ نَكُونَ لِلإِنْجِيلِ شُهُودًا أُمَنَاءَ،<br>
+                فَنَكُونَ رُسُلَ نُورٍ، وَطُمَأْنِينَةٍ، وَسَلَامٍ.<br>
+                هَبْنَا أَنْ نَكُونَ فِي كُلِّ حِينٍ إِخْوَةً أَوْفِيَاءَ لِفَادِينَا الْحَبِيبِ،<br>
+                فَنُحِبَّ جَمِيعَ النَّاسِ كَمَا أَحَبَّنَا.<br><br>
+                آمِينَ.<br><br>
+                يَا سَيِّدَةَ الشَّبِيبَةِ، صَلِّي لِأَجْلِنَا.
+            </div>
+        </section>
+
+        <section class="nav-cards fade-in-up">
+            <a href="day1.html" class="nav-card">
+                <div class="card-icon">🌅</div>
+                <h3 class="card-title">Day 1</h3>
+                <span class="card-cta">Explore Day 1 →</span>
+            </a>
+
+            <a href="day2.html" class="nav-card">
+                <div class="card-icon">🤝</div>
+                <h3 class="card-title">Day 2</h3>
+                <span class="card-cta">Explore Day 2 →</span>
+            </a>
+
+            <a href="day3.html" class="nav-card">
+                <div class="card-icon">👑</div>
+                <h3 class="card-title">Day 3</h3>
+                <span class="card-cta">Explore Day 3 →</span>
+            </a>
+        </section>
+
+        </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 St. John Youth group. All rights reserved.</p>
+            <div class="social-follow">
+                <p>Follow us on social media:</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/saint_john_youth?igsh=Y205NmM5YWJ4NmEw" target="_blank" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/groups/1599680380103711" target="_blank" aria-label="Follow us on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('fade-in-up-active'); // Add a class to indicate it's active
+                } else {
+                    // Optional: remove animation if it scrolls out of view
+                    // entry.target.style.opacity = '0';
+                    // entry.target.style.transform = 'translateY(30px)';
+                    // entry.target.classList.remove('fade-in-up-active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+
+            lastScrollY = currentScrollY;
+        });
+
+        // Card hover effects (CSS handles this, but JS can add more complex behavior)
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Not strictly needed if CSS handles it, but good for demonstrating JS capability
+                // card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (placeholder for future implementation)
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
+            // Mobile menu functionality would be implemented here
+            console.log('Mobile menu toggle clicked');
+            // Example: toggle a class on a mobile menu overlay
+            // document.body.classList.toggle('mobile-menu-open');
+        });
+
+        // Add ripple effect to buttons and cards
+        document.querySelectorAll('.cta-button, .nav-card').forEach(element => {
+            element.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                    z-index: 5; /* Ensure ripple is above other content */
+                `;
+
+                this.style.position = 'relative'; /* Ensure position for absolute ripple */
+                this.style.overflow = 'hidden'; /* Hide ripple outside bounds */
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Ripple animation keyframes are already in the <style> tag.
+    </script>
+</body>
+</html>

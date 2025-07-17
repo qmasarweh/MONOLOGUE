@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 Activity Details | St. John Youth Camp</title>
+    <link rel="icon" href="photos/mon.jpg" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Include all your CSS variables and base styles from day1.html */
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-gold: #f59e0b;
+            --secondary-green: #059669;
+            --accent-coral: #fb7185;
+            --accent-sky: #0ea5e9;
+            --neutral-gray: #6b7280;
+            --neutral-light: #f9fafb;
+            --neutral-dark: #374151;
+            --white: #ffffff;
+            
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Crimson Text', serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 20px 25px -5px / 0.1); 
+            
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            background: var(--neutral-light);
+            overflow-x: hidden;
+            padding-bottom: 4rem; /* Add some padding for better spacing */
+        }
+
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+
+        .logo-header img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .detail-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem; /* Add margin between sections */
+        }
+
+        .detail-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .detail-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-time {
+            font-size: 1.1rem;
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        .detail-content {
+            color: var(--neutral-dark);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .detail-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-gray);
+        }
+
+        .detail-content ul li::before {
+            content: '•';
+            color: var(--primary-gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* RTL specific styles */
+        .rtl-text {
+            direction: rtl;
+            unicode-bidi: embed; /* Ensures correct handling of mixed content if any */
+            text-align: right; /* Align text to the right */
+        }
+        
+        .rtl-text ul {
+            padding-right: 0; /* Remove left padding for RTL lists */
+            padding-left: initial;
+        }
+
+        .rtl-text ul li {
+            padding-right: 1.5rem; /* Add right padding for RTL list items */
+            padding-left: initial;
+        }
+
+        .rtl-text ul li::before {
+            left: initial;
+            right: 0; /* Position bullet to the right for RTL */
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-button:hover {
+            background: #152b6b; /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Photo Gallery Styles for Detail Page */
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .detail-gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Responsive for detail page */
+        @media (max-width: 768px) {
+            .detail-container {
+                margin: 1.5rem auto;
+                padding: 1.5rem;
+            }
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+            .detail-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            }
+            .detail-gallery img {
+                height: 140px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up {
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(30px); /* Start position for animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Apply transition */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo-header">
+                <img src="photos/mon.jpg" alt="Monologue Logo" loading="lazy">
+                <span class="logo-text">Monologue</span>
+            </a>
+            
+            <nav class="breadcrumb">
+                <a href="main.html">Home</a>
+                <span>→</span>
+                <a href="day1.html">Day 1</a>
+                <span>→</span>
+                <span>Activity Details</span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="morning-prayer" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1 class="rtl-text">زيارة كنيسة سيدة الجبل - عنجرة</h1>
+                <p class="detail-time">8:30 AM - 10:00 AM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/morning_prayer_1.jpg" alt="Campers praying in chapel" loading="lazy">
+                <img src="photos/morning_prayer_2.jpg" alt="Sunrise over camp grounds" loading="lazy">
+                <img src="photos/morning_prayer_3.jpg" alt="Open Bible with light" loading="lazy">
+            </div>
+            
+            <div class="detail-content rtl-text">
+                <p>تم افتتاح المخيم في كنيسة سيدة الجبل في عنجرة ،وبعدها قمنا بالتعرف إلى تاريخها حيث تأسست الكنيسة الكاثوليكية الحديثة عام 1932م على أنقاض كنيسة أثرية قديمة تعود للقرن الرابع الميلادي.
+الكنيسة تقع في بلدة عنجرة بمحافظة عجلون شمال غرب الأردن، على تلة مرتفعة.
+تعتبر من المواقع الخمسة الرسمية المعتمدة من الفاتيكان للحج المسيحي في الأردن، إلى جانب:
+مغطس المسيح (بيت عنيا على نهر الأردن)
+موقع مار إلياس (تل مار إلياس في عجلون)
+جبل نيبو في مادبا 
+و موقع قلعة مكاور 
+
+تعود نشأتها إلى العصور البيزنطية، وقد تعرضت لعدة تجديدات على مر العصور. وتشير الأدلة الأثرية إلى أن الكنيسة كانت مركزًا دينيًا مهمًا في العهد البيزنطي، حيث كانت تُستخدم كدير مسيحي. وفي العصور الوسطى، تعرضت الكنيسة للدمار نتيجة الزلازل والغزوات، إلا أن المجتمع المسيحي المحلي عمل على ترميمها وإعادة إحيائها.
+
+أما من حيث التجديدات الحديثة، فقد خضعت الكنيسة لعدة تجديدات في العصور الحديثة، وكان آخرها في أواخر القرن العشرين، حيث أصبحت اليوم مكانًا يعكس تاريخ المنطقة وأهمية المسيحية فيها. كما أنها تجذب الزوار الذين يأتون للاستمتاع بجمال المناظر الطبيعية المحيطة والاطلاع على تاريخ الكنيسة.
+
+اسم "سيدة الجبل" يشير إلى مريم العذراء، التي تُعتبر "سيدة" المسيحيين ووالدة يسوع المسيح.
+الكنيسة تستقبل الحجاج والزوار من مختلف أنحاء الأردن والعالم، وتعتبر مركزًا روحيًا هامًا في المحافظة.
+تحتوي الكنيسة على غرفة للتعميد مزودة بجرن للتعميد، تُستخدم في طقوس المعمودية، مما يبرز دور الكنيسة كمكان روحي كامل الخدمات.
+
+تعتبر كنيسة سيدة الجبل في عنجرة اليوم رمزًا من رموز التعايش الديني في الأردن، حيث يزور الكنيسة المسيحيون والمسلمون على حد سواء، مما يعكس الوحدة والتسامح بين الأديان في المملكة.</p>
+                
+                <h2 class="rtl-text">ومن اهم المعجزات الواقعة في كنيسة سيدة الجبل: </h2>
+            
+                <p>ومن اهم المعجزات الواقعة في كنيسة سيدة الجبل: 
+
+في السادس من شهر أيار من عام 2010، تواجدت إحدى الراهبات برفقة أربعة فتيات من المدرسة ومعلمة في المزار لتنظيفه، وكانت هناك أيضا  امرأتين كبيرات السن في المزار.
+داخل المزار هناك مغارة تحتوي على تمثال لمريم العذراء يحمل الطفل يسوع، محمية بباب من زجاج مُغلق بثلاثة أقفال. ومفاتيح الاقفال تُحفظ عادتا في بيت الكهنة.
+وبينما كانت الراهبة تُنظف الباب الزجاجي الذي يوجد بداخله تمثال السيدة العذراء، شعرت بحركة داخل المغارة، لكهنا لم تهتم لاعتقادها انها انعكاسات الضوء على زجاج الباب.
+بعدة عدة دقائق، بينما كانت الراهبة قريبة جدا من المغارة وامام تمثال العذراء بالضبط يفصلها عنه الزجاج، رأت وجه العذراء تحول الى وجه طبيعي وبدأت بالرمش (تحريك رموش العيون). في هذه اللحظة خافت الراهبة وصرخت، مُلفتة انتباه الحاضرين. وعند اقترابهم رأوا رموش العذراء تتحرك و سقطت دمعتين حمراء من عيون العذراء.
+تم ابلاغ كل من البطريرك فؤاد الطوال والمطران سليم الصائغ بالحدث، فامروا ان تُغلق أبواب المزار على الفور. فتجمع حشد كبير من الناس امام المزار و بدأوا بتلاوة السبحة الوردية والتراتيل إكراما لمريم العذراء، بحضور عدد كبير من الجيران المسلمين الذين أتوا يتساءلون عن سبب الدموع.
+طلب سيادة المُطران سليم الصائغ فحص الدموع إلى مُستشفى راهبات الوردية في اربد، التابع لرهبانية الوردية الأورشليمية المُقدسة في القدس. وأكدت الدراسة أن عيّنة الدم بشرية حقيقية.
+شكلت البطريركية اللاتينية لجنة لتحقق والاستفسار الدقيق عن الحدث وبعد أشهر من الدراسة، اكدت الكنيسة في الاردن انه لا يوجد اي تفسير بشري لما حدث. وبعد ثلاثة سنوات وخلال الاحتفال السنوي لمريم العذراء سيدة الجبل، أعلن البطريرك فؤاد طوال امام اربعة الالاف حاج، أن بكاء مريم العذراء دما هو معجزة، وقد قال سيدته: "مريم العذراء تبكي معنا وعلينا".
+لم تقل العذراء اي كلمة في ذلك اليوم، فقط بكت دم. بهذه الطريقة اظهرت لنا بوضوح حزنها الشديد من قلبها المبارك. فهي ام الكنيسة، فهي ترى وتُشارك معاناة ابنائها. بعد عدة اشهر من هذا الحدث بدأ في الشرق الاوسط ما يُسمى (بشكل خاطىء) "بالربيع العربي" الذي بسببه عائلات كثيرة عانات (وكثيرين ما زالوا يُعاني) أسوأ فضائع الحرب ...
+حاليا عينة الدم التي اُخذت من وجه مريم العذراء سيدة الجبل موجودة في مستشفى راهبات الوردية في اربد تحت رعاية الاخوات الراهبات.
+يا سيدة جبل ، صلي لأجلنا!</p>
+                
+            </div>
+        </div>
+
+        <div id="breakfast-fellowship" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1 class="rtl-text">زيارة كنسية مار الياس</h1>
+                <p class="detail-time">10:45 AM - 11:15 AM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/m1.jpg" alt="Group enjoying breakfast" loading="lazy">
+                <img src="photos/m2.jpg" alt="Table with breakfast food" loading="lazy">
+                <img src="photos/m3.jpeg" alt="Campers chatting at breakfast" loading="lazy">
+            </div>
+            
+            <div class="detail-content rtl-text">
+                <p>موقع مار إلياس الأثري يقع شمال غرب مدينة عجلون في الأردن، على تلة عالية تسمى "تل مار إلياس"، وترتفع حوالي 900 متر عن سطح البحر.
+الموقع من أهم المواقع المسيحية في الأردن، ويضم بقايا دير وكنائس بيزنطية تعود للقرن السادس الميلادي.
+سُمّي الموقع على اسم النبي إيليا (مار إلياس)، الذي عاش أو ولد في هذه المنطقة.
+يحتوي الموقع على كنيســتين رئيسيتين: الكنيسة العليا والكنيسة السفلى، بالإضافة إلى أديرة وغرف للرهبان.
+الكنيسة العليا: تقع على قمة التل، بمساحة 1430 متر مربع، مخططها بازليكيكي مع حنية  ("نوع من تصميم الكنائس القديمة حيث يكون الشكل مستطيلاً مع جزء نصف دائري في المقدمة")  نصف دائرية باتجاه الشرق تشكل شكل الصليب، وتحتوي على رواقين شمالي وجنوبي مزودين بأعمدة، إضافة إلى أرضيات فسيفسائية مزخرفة ورسومات نباتية وهندسية، كما تضم غرفة تعميد بها جرن خاص مع نظام مائي وصهريج ماء في الساحة.
+في الكنيسة العليا عُثر على ألواح رخامية مكتوبة باليونانية تعود لعام 622م، توضح تكريم الكاهن سابا وزوجته، مما يعكس أهمية الموقع وقدسيته.
+الكنيسة السفلى: اكتُشفت عام 2001م، وتتميز بتصميم ثلاثي الحنايات نصف الدائرية التي تشكل شكل زهرة، ورواق مستطيل مركزي بدون أروقة جانبية، مع غرف جانبية شمالية وجنوبية، إحداها فوق قبور، والساحة المكشوفة للكنيسة مهدمة ولم يبقَ منها إلا أساساتها.
+الموقع يحتوي على نظام مائي متطور يمد البئر الموجود في ساحة الكنيسة بالماء، ويعكس تطور البناء والتخطيط في تلك الحقبة.
+الموقع يعتبر مركزًا روحيًا وتاريخيًا هامًا للمسيحيين، حيث كان مكان عبادة وتأمل للرهبان والزوار.
+مار إلياس الأثري يبرز كدليل حي على الإيمان المسيحي في المنطقة وعلى التراث البيزنطي العريق.
+
+
+ من هو مار إلياس ( قصة حياته ) ؟ 
+مار إلياس نبي من أنبياء العهد القديم عاش في مملكة إسرائيل منذ حوالي 3000 سنة.
+كان مؤمنًا بالله ومحبًا له جدًا، وكان يريد أن يعبد الشعب الله الحقيقي فقط.
+في زمنه، كان الملك أخآب وزوجته إيزابيل يشجعان عبادة الأصنام والأوثان.
+صلّى مار إلياس بإيمان قوي فتوقف المطر لمدة ثلاث سنوات ونصف، وكان هذا عقابًا على عبادة الأوثان.
+عندما صلّى مرة أخرى، عاد المطر وغمرت الأرض بالخيرات.
+عاش فترة في البرية، وكان الله يرسل له الطعام عن طريق الغربان.
+قبل نهاية حياته، كان مار إلياس مع تلميذه أليشع الذي رفض أن يتركه.
+عند نهر الأردن، ضرب مار إلياس الماء بردائه فانشق النهر وعبرا على اليابسة.
+فجأة، ظهرت مركبة نارية مع خيول نارية فصلت بين مار إلياس وأليشع.
+صعد مار إلياس إلى السماء في عاصفة نارية، بينما نظر أليشع بدهشة وقال: "يا أبي، يا مركبة إسرائيل وفرسانها!
+بعد صعوده، أخذ أليشع رداءه ليكمل رسالة مار إلياس.
+
+مرفق الاتي مراجع من الكتاب المقدس عن مار الياس (إيليا) :
+
+ 1 ملوك 17:1 (العهد القديم) 
+«فقال إيليا التشيبي من سكان جلعاد لأخآب: ‹حَيٌّ هو الرب إله إسرائيل الذي أنا قائم أمامه، لا يكون مطر ولا ندى هذه السنين إلا عند قولي›.»
+
+ يعقوب 5:17 (العهد الجديد)
+«كان إيليا إنسانًا بشبهات وأوجاع مثلنا، فصلى صلاة أن لا تمطر، ولم تمطر على الأرض ثلاث سنين وستة أشهر.»</p>
+                
+            </div>
+        </div>
+
+        <div id="welcome-orientation" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1 class="rtl-text">افتتاح المخيم وتقسيم الفرق </h1>
+                <p class="detail-time">1:00 PM - 2:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/final 1.jpg" alt="ds team" loading="lazy">
+                <img src="photos/final 2.jpg" alt="fast and furious" loading="lazy">
+                <img src="photos/final 3.jpg" alt="frozen" loading="lazy">
+                <img src="photos/final 4.jpg" alt="harry potter" loading="lazy">
+                <img src="photos/final 5.jpg" alt="marvel" loading="lazy">
+                <img src="photos/final 6.jpg" alt="moana" loading="lazy">
+            </div>
+            
+            <div class="detail-content rtl-text">
+            
+                <p>افتتحنا المخيم بطريقة مميّزة، حيث قمنا بتوزيع الفرق من خلال إخفاء مغلّفات في أماكن عشوائية في الدير. وقد احتوت هذه المغلّفات على صور معدّلة لكل شخص باستخدام الذكاء الاصطناعي، وفق الطابع الخاص بكل فريق حيث كانت الفرق مبنية على أسماء من أفلام تماشيًا مع شكل المخيم  ، بالإضافة إلى اسم الفريق.  
+حبث توزعت أسماء الفرق على النحو الاتي : 
+الفريق الأول: فيلم Moana 
+الفريق الثاني: فيلم Fast and furious 
+الفريق الثالث: فيلم Frozen 
+الفريق الرابع: فيلم Marvel
+الفريق الخامس: فيلم DC
+الفريق السادس: فيلم Harry Potter
+وكان على جميع المشاركين البحث عن المغلّف الذي يحمل أسماءهم، ليكتشفوا الفريق الذي ينتمون إليه.
+
+عقب ذلك، شاهدنا مقطع فيديو يلخّص جميع الأنشطة التي قمنا بها خلال عام 2025-2024</p>
+            </div>
+        </div>
+
+        <div id="team-formation" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Team Formation Activities</h1>
+                <p class="detail-time">2:15 PM - 3:30 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/team_building.jpg" alt="Team collaborating" loading="lazy">
+                <img src="photos/team_formation_2.jpg" alt="Group solving a puzzle" loading="lazy">
+                <img src="photos/team_formation_3.jpg" alt="Campers interacting outdoors" loading="lazy">
+            </div>
+            
+            <div class="detail-content">
+                <p>Dive into dynamic team-building exercises designed to foster collaboration and communication. You'll be assigned to small groups, where you'll work together on engaging challenges and establish group covenants to guide your interactions throughout the camp.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Group Assignments**: Get to know your small group members, who will be your close companions for many activities.</li>
+                    <li>**Collaborative Challenges**: Engage in fun problem-solving activities that require teamwork and creative thinking.</li>
+                    <li>**Covenant Building**: Work with your team to establish shared values and expectations for working together harmoniously.</li>
+                    <li>**Leadership Opportunities**: Discover and utilize your strengths within a team setting.</li>
+                </ul>
+                
+                <p>These activities are fundamental to building the strong, supportive community that defines the St. John Youth Camp experience.</p>
+            </div>
+        </div>
+
+        <div id="lunch-small-group" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Color Festival</h1>
+                <p class="detail-time">5:00 PM - 7:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/1.png" alt="Lunch spread" loading="lazy">
+                <img src="photos/2.jpg" alt="Small group discussion" loading="lazy">
+                <img src="photos/3.png" alt="Campers eating together" loading="lazy">
+            </div>
+            
+            <div class="detail-content">
+                <p>الفكرة الأساسية:
+سلسلة من الألعاب التفاعلية التي تتمحور حول الألوان، حيث يتنافس المشاركون لجمع أكياس تحتوي على بودرة ملوّنة تُستخدم في "حرب الألوان".
+يُخصَّص لون معين لكل فريق، وفي نهاية الفقرة الأساسية (حرب الألوان)، يُمنح الفوز للفريق الذي يتمكّن من تلوين أكبر عدد ممكن من أفراد الفرق الأخرى بلونه الخاص، ويُمنح نقاطًا بناءً على ذلك.
+
+اللعبة الأولى: متاهة الألوان
+الوصف:
+يوضع أمام كل فريق صفّان من الألوان مرتبة بتسلسل معين.
+على كل عضو من الفريق أن يختار لونين ويمشي عليهما. إذا كان الترتيب صحيحًا، يتقدّم إلى المربّع التالي. وإن أخطأ، يعود إلى نهاية الطابور ويبدأ الشخص التالي من البداية. يجب على الفريق ككل حفظ التسلسل الصحيح للألوان.
+أول فريق ينجح جميع أفراده في اجتياز المتاهة يفوز بكيس من بودرة الألوان.
+
+
+اللعبة الثانية: الرسم على الوجه
+الوصف:
+يتم تقسيم الفريق إلى مجموعتين: الأولى يُرسم على وجوه أفرادها، والثانية تقوم بعملية الرسم.
+يُعطى الفريقان الكلمة نفسها، وعلى كل فريق رسمها على وجه العضو الآخر. الفريق الذي يرسم بشكل أجمل أو أدق يفوز بنقطة.
+الفريق الحاصل على أعلى عدد من النقاط يفوز بكيس من بودرة الألوان.
+
+
+اللعبة الثالثة: الأسئلة والبالونات
+الوصف:
+يجلس الفريقان مقابل بعضهما، ويختار كل فريق عضوًا يجيب عن الأسئلة.
+إذا تأخر أحدهم في الإجابة أو أخطأ، تُفقَع بالونة مليئة بالبودرة على رأسه.
+من يُجب بشكل صحيح يحصل على نقطة.
+الفريق الحاصل على أكبر عدد من النقاط في نهاية اللعبة يفوز بكيس البودرة.
+
+
+اللعبة الرابعة: لعبة الصور
+الوصف:
+يُعطى كل فريق قائمة بأشياء محددة يجب التقاط صور معها، على أن تكون الألوان مطابقة لألوان الفريق.
+ويُشترط أن يظهر جميع أعضاء الفريق في كل صورة.
+أول فريق يُكمل القائمة يفوز بكيس بودرة.
+
+
+
+اللعبة الخامسة: الدارتس والبالونات
+الوصف:
+يجلس أحد أفراد الفريق على كرسي، وفوقه لوحة تحتوي على دبابيس.
+يرمي الفريق الخصم بالونات مملوءة ببودرة ملوّنة نحو اللوحة.
+الفريق الذي يتمكّن من تفجير أكبر عدد من البالونات وتلويث الشخص الخصم أكثر، يفوز بكيس بودرة.
+
+
+اللعبة السادسة: نرد الألوان
+الوصف:
+تُرتب أوراق ملوّنة على الأرض وفق ألوان الفرق، وبعدد عشر ورقات لكل لون.
+يُستخدم نرد كبير (مكعّب) يحتوي على ستة ألوان تمثل ألوان الفرق.
+يقف كل فريق خلف اللون المخصص له، ويقوم برمي النرد.
+عند خروج لون الفريق، يتقدّم أحد أفراده خطوة.
+أول فريق يُنهي تقدّم جميع أفراده يفوز بكيس بودرة.
+
+الاحتياجات:
+
+
+اللعبة السابعة: الكروت الملوّنة
+الوصف:
+توضع كروت صغيرة ملوّنة داخل صندوق أسود، وتمثل الألوان التحديات التالية:
+
+الأحمر: تحدٍ رياضي
+
+الأصفر: تقليد صوت
+
+الأخضر: حل لغز
+
+الأسود: "راحت عليك" (خسارة الدور)
+
+يسحب كل فرد من كل فريق بطاقة، وينفّذ التحدي المطلوب.
+إذا نجح في التحدي، يُمنح نقطة.
+الفريق الذي يجمع أكبر عدد من النقاط يفوز بكيس بودرة.</p>
+                
+        
+            </div>
+        </div>
+
+        <div id="leadership-workshop" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Leadership Workshop</h1>
+                <p class="detail-time">7:10 PM - 10:00 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/workshop.jpg" alt="Workshop in progress" loading="lazy">
+                <img src="photos/leadership_1.jpg" alt="Youth leader speaking" loading="lazy">
+                <img src="photos/leadership_2.jpg" alt="Group brainstorming" loading="lazy">
+            </div>
+            
+            <div class="detail-content">
+                <p>This interactive workshop focuses on developing Christian leadership principles. Through engaging activities and discussions, you'll explore what it means to lead with faith, discover your unique spiritual gifts, and learn how to apply them in service to your community and beyond.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Interactive Sessions**: Participate in engaging exercises that illuminate leadership concepts.</li>
+                    <li>**Spiritual Gift Discovery**: Guided self-assessment and discussions to help identify your unique spiritual talents.</li>
+                    <li>**Practical Application**: Learn how to use your gifts to serve others effectively.</li>
+                    <li>**Inspirational Speakers**: Hear from experienced leaders who will share their insights and journeys.</li>
+                </ul>
+                
+                <p>Empower yourself with the tools and inspiration to become a compassionate and effective leader, guided by your faith.</p>
+            </div>
+        </div>
+
+        <div id="outdoor-challenge" class="detail-container fade-in-up">
+            <div class="detail-header">
+                <h1>Outdoor Challenge</h1>
+                <p class="detail-time">11:15 PM - 11:30 PM</p>
+            </div>
+            
+            <div class="detail-gallery">
+                <img src="photos/outdoor_activities.jpg" alt="Outdoor ropes course" loading="lazy">
+                <img src="photos/outdoor_challenge_1.jpg" alt="Team navigating obstacle" loading="lazy">
+                <img src="photos/outdoor_challenge_2.jpg" alt="Group huddle for strategy" loading="lazy">
+            </div>
+            
+            <div class="detail-content">
+                <p>Test your teamwork and problem-solving skills in our thrilling Outdoor Challenge! This activity features team-based physical challenges, including a low ropes course and other problem-solving tasks, all designed to build trust and enhance communication within your group.</p>
+                
+                <h2>What to Expect:</h2>
+                <ul>
+                    <li>**Low Ropes Course**: Navigate a series of elements that require cooperation and support.</li>
+                    <li>**Problem-Solving Tasks**: Engage in creative challenges that test your group's collective intelligence.</li>
+                    <li>**Trust Building**: Activities designed to strengthen reliance and confidence in your teammates.</li>
+                    <li>**Physical Activity**: A fun way to get active and enjoy the natural surroundings of the camp.</li>
+                </ul>
+                
+                <p>Embrace the challenge, support your team, and discover new strengths as you overcome obstacles together!</p>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="day1.html" class="back-button">← Back to Day 1 Schedule</a>
+        </div>
+    </main>
+
+    <script>
+        // Intersection Observer for animations (apply to all .detail-container elements)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.detail-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Smooth scroll to the target section if an anchor is in the URL
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
